@@ -9,7 +9,10 @@
 
 #ifndef COMMONAPI_SOMEIP_WATCH_HPP_
 #define COMMONAPI_SOMEIP_WATCH_HPP_
-
+#if defined(__QNX__)
+#include <sys/types.h>
+#include <unistd.h>
+#endif
 #include <memory>
 #include <queue>
 #include <mutex>
@@ -61,6 +64,8 @@ class Watch : public CommonAPI::Watch {
 private:
 #ifdef _WIN32
     int pipeFileDescriptors_[2];
+#elif defined(__QNX__)
+    int pipeFileDescriptors_[2];
 #else
     int eventFd_;
 #endif
@@ -76,6 +81,8 @@ private:
 
 #ifdef _WIN32
     HANDLE wsaEvent_;
+    const int pipeValue_;
+#elif defined(__QNX__)
     const int pipeValue_;
 #else
     const std::uint64_t eventFdValue_;

@@ -66,7 +66,8 @@ include_directories( ${Boost_INCLUDE_DIR} )
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_CRT_SECURE_NO_WARNINGS /wd4503")
 link_directories(${Boost_LIBRARY_DIR})
 else()
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Wextra -Wformat -Wformat-security -Wconversion -fexceptions -fstrict-aliasing -fstack-protector -fasynchronous-unwind-tables -fno-omit-frame-pointer -DCOMMONAPI_INTERNAL_COMPILATION -D_GLIBCXX_USE_NANOSLEEP -DBOOST_LOG_DYN_LINK -pthread -fvisibility=hidden")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Wextra -Wformat -Wformat-security -Wconversion -fexceptions -fstrict-aliasing -fstack-protector -fasynchronous-unwind-tables -fno-omit-frame-pointer -DCOMMONAPI_INTERNAL_COMPILATION -D_GLIBCXX_USE_NANOSLEEP -DBOOST_LOG_DYN_LINK -pthread -fvisibility=hidden -D_GNU_SOURCE -D_XOPEN_SOURCE=600")
+#-D_GNU_SOURCE -D_XOPEN_SOURCE=600 added to enable POSIX extension for QNX & LINUX
 endif()
 
 SET(MAX_LOG_LEVEL "DEBUG" CACHE STRING "maximum log level")

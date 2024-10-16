@@ -14,7 +14,7 @@
 #include <CommonAPI/SomeIP/Types.hpp>
 #include <vector>
 
-#if defined(_WIN32) || defined(ANDROID)
+#if defined(_WIN32) || defined(ANDROID) || defined(__QNX__)
     #if !defined(LITTLE_ENDIAN)
     #define LITTLE_ENDIAN 1234
     #endif
