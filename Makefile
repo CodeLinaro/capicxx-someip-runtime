@@ -22,7 +22,7 @@ build:
 ifeq ($(OS),QNX)
 	cd ${BUILD_DIR}; \
 	"Building Capicxx-SomeIp-Runtime"; \
-	cmake -DCMAKE_TOOLCHAIN_FILE=qcc8_qnx710_aarch64le.cmake -DUSE_INSTALLED_COMMONAPI=OFF -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR} .. ; \
+	cmake -DCMAKE_TOOLCHAIN_FILE=${SOA_DIR}/soa-infra/framework/qcc8_qnx710_aarch64le.cmake -DUSE_INSTALLED_COMMONAPI=OFF -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR} -DCMAKE_PREFIX_PATH="${INSTALL_DIR}/lib/cmake/CommonAPI-3.2.0/;${INSTALL_DIR}/usr/lib/cmake/vsomeip3/" .. ; \
 	make install -j8;
 endif
 

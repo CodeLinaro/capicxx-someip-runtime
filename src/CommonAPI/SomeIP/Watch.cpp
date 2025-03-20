@@ -11,11 +11,11 @@
 #ifdef _WIN32
 #include <WinSock2.h>
 #include <ws2tcpip.h>
+#elif defined(__QNX__)
+#include <unistd.h>
 #else
-#if !defined(__QNX__)
 #include <unistd.h>
 #include <sys/eventfd.h>
-#endif
 #endif
 
 #if ANDROID
